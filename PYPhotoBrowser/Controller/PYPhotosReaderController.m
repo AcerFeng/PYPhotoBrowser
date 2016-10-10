@@ -167,7 +167,7 @@
     self.collectionView.alpha = 0.0;
     
 
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         self.scaling = YES;
         // 放大图片
         copyView.py_width = self.collectionView.py_width - ((UICollectionViewFlowLayout *)self.collectionViewLayout).minimumLineSpacing;
@@ -252,7 +252,7 @@
     [self.beginView.photosView setPhotos:self.selectedPhotoView.photosView.photos];
     
     // 执行动画
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         self.scaling = YES;
         // 恢复矩阵变换
         self.beginView.transform = CGAffineTransformIdentity;
@@ -335,7 +335,7 @@
     windowView.rotationGesture = NO;
     // 恢复倍数
     windowView.scale = 1.0;
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         // 正在旋转
         self.rotating = YES;
         // 禁止与用户交互

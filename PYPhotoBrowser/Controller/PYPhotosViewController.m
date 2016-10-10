@@ -65,12 +65,26 @@
     self.photosReader.selectedPhotoView = photoView;
 }
 
-// 图片放大
+// 还原
 - (void)bigImageDidClicked:(NSNotification *)notification
+{
+    // 获取当前屏幕显示的cell的indexPath
+    NSIndexPath *indexPath = [[self.photosReader.collectionView indexPathsForVisibleItems] firstObject];
+    // 取出选中的cell
+    PYPhotoCell *selectedCell = (PYPhotoCell *)[self.photosReader.collectionView cellForItemAtIndexPath:indexPath];
+    // 设置选中的photoView
+    self.photosReader.selectedPhotoView.windowView = selectedCell.photoView;
+    
+    [self.photosReader hiddenPhoto];
+    self.photosReader = nil;
+}
+
+// 放大
+- (void)smallImageDidClieked:(NSNotification *)notification
 {
     // 取出选中图片
     NSDictionary *userInfo = notification.userInfo;
-    PYPhotoView *photoView = userInfo[PYBigImageDidClikedNotification];
+    PYPhotoView *photoView = userInfo[PYSmallgImageDidClikedNotification];
     // 创建图片浏览器
     PYPhotosReaderController *photosReader = [PYPhotosReaderController readerController];
     photosReader.selectedPhotoView = photoView;
@@ -85,20 +99,6 @@
     lastWindow.windowLevel = UIWindowLevelAlert;
     // 呈现在某一个window上
     [self.photosReader showPhotosToWindow:lastWindow];
-}
-
-// 还原
-- (void)smallImageDidClieked:(NSNotification *)notification
-{
-    // 获取当前屏幕显示的cell的indexPath
-    NSIndexPath *indexPath = [[self.photosReader.collectionView indexPathsForVisibleItems] firstObject];
-    // 取出选中的cell
-    PYPhotoCell *selectedCell = (PYPhotoCell *)[self.photosReader.collectionView cellForItemAtIndexPath:indexPath];
-    // 设置选中的photoView
-    self.photosReader.selectedPhotoView.windowView = selectedCell.photoView;
-    
-    [self.photosReader hiddenPhoto];
-    self.photosReader = nil;
 }
 
 // 图片预览（未发布）

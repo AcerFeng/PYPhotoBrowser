@@ -98,7 +98,7 @@
 {
     // 如果正在执行动画，直接返回
     if (self.isNavBarAnimating) return;
-    CGFloat duration = 0.5;
+    CGFloat duration = 0.3;
     [UIView animateWithDuration:duration animations:^{
         self.navBarAnimating = YES;
         self.statusBarHidden = self.navigationController.navigationBar.py_y > 0;

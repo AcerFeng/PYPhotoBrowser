@@ -67,9 +67,9 @@
         photoView.orignalFrame = photoView.frame;
     }
     // 发出通知
-    userInfo[PYBigImageDidClikedNotification] = selectedPhotoView;
+    userInfo[PYSmallgImageDidClikedNotification] = selectedPhotoView;
     userInfo[PYPhotoBrowseViewKey] = self;
-    NSNotification *notification = [[NSNotification alloc] initWithName:PYBigImageDidClikedNotification object:self.photosView userInfo:userInfo];
+    NSNotification *notification = [[NSNotification alloc] initWithName:PYSmallgImageDidClikedNotification object:self.photosView userInfo:userInfo];
     [center postNotification:notification];
 }
 
@@ -90,8 +90,8 @@
     PYPhotoView *selectedPhotoView = self.photosView.subviews[self.currentIndex];
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-    userInfo[PYSmallgImageDidClikedNotification] = selectedPhotoView;
-    NSNotification *notification = [[NSNotification alloc] initWithName:PYSmallgImageDidClikedNotification object:self.photosView userInfo:userInfo];
+    userInfo[PYBigImageDidClikedNotification] = selectedPhotoView;
+    NSNotification *notification = [[NSNotification alloc] initWithName:PYBigImageDidClikedNotification object:self.photosView userInfo:userInfo];
     [center postNotification:notification];
     
     // 图片浏览关闭后隐藏window
@@ -108,8 +108,8 @@
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     // 缩小
-    userInfo[PYSmallgImageDidClikedNotification] = photoView;
-    NSNotification *notification = [[NSNotification alloc] initWithName:PYSmallgImageDidClikedNotification object:self.photosView userInfo:userInfo];
+    userInfo[PYBigImageDidClikedNotification] = photoView;
+    NSNotification *notification = [[NSNotification alloc] initWithName:PYBigImageDidClikedNotification object:self.photosView userInfo:userInfo];
     [center postNotification:notification];
     
     // 隐藏图片加载失败/加载进度

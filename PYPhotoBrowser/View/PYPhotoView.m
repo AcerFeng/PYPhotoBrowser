@@ -464,8 +464,8 @@ static CGSize originalSize;
                 photoView.orignalFrame = photoView.frame;
             }
             // 发出通知
-            userInfo[PYBigImageDidClikedNotification] = self;
-            NSNotification *notification = [[NSNotification alloc] initWithName:PYBigImageDidClikedNotification object:self.photosView userInfo:userInfo];
+            userInfo[PYSmallgImageDidClikedNotification] = self;
+            NSNotification *notification = [[NSNotification alloc] initWithName:PYSmallgImageDidClikedNotification object:self.photosView userInfo:userInfo];
             [center postNotification:notification];
         } else { // 缩小
             // 隐藏图片加载失败/加载进度
@@ -474,8 +474,8 @@ static CGSize originalSize;
             // 移除进度条
             [self.progressView removeFromSuperview];
             // 不可以双击
-            userInfo[PYSmallgImageDidClikedNotification] = self;
-            NSNotification *notification = [[NSNotification alloc] initWithName:PYSmallgImageDidClikedNotification object:self.photosView userInfo:userInfo];
+            userInfo[PYBigImageDidClikedNotification] = self;
+            NSNotification *notification = [[NSNotification alloc] initWithName:PYBigImageDidClikedNotification object:self.photosView userInfo:userInfo];
             [center postNotification:notification];
         }
     } else if (self.photosView.photosState == PYPhotosViewStateWillCompose) { // 未发布
